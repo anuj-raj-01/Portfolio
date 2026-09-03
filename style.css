@@ -1,0 +1,1169 @@
+/* =====================================================
+   PORTFOLIO STYLESHEET
+   Organized top to bottom in the same order sections
+   appear on the page, so you can find things easily.
+   ===================================================== */
+
+/* ---------- 1. ROOT VARIABLES ----------
+   These are reusable values (colors, spacing, fonts).
+   Change a value here once, and it updates everywhere
+   it's used across the whole site. */
+:root{
+  --navy:#0A1F44;              /* main dark navy - used for headings & footer */
+  --navy-deep:#071634;         /* slightly darker navy - footer background */
+  --royal:#2952CC;             /* royal blue - primary buttons, links, accents */
+  --royal-light:#3D6BFF;       /* lighter blue - hover state for royal blue */
+  --saffron:#F5A623;           /* saffron/amber - accent color (CTA buttons, dots) */
+  --saffron-dark:#DB8F16;      /* darker saffron - hover state for saffron buttons */
+  --bg:#FFFFFF;                /* default page background (white) */
+  --bg-soft:#F6F8FC;           /* very light gray-blue - alternate section background */
+  --text:#0A1F44;              /* default body text color */
+  --text-muted:#5C6B85;        /* muted slate gray - used for descriptions/paragraphs */
+  --border:#E4E9F2;            /* light border color used on cards, inputs, dividers */
+  --radius:16px;               /* standard corner rounding for big cards/sections */
+  --radius-sm:10px;            /* smaller corner rounding for compact elements */
+  --shadow-sm:0 2px 8px rgba(10,31,68,0.06);   /* subtle shadow - default cards */
+  --shadow-md:0 8px 30px rgba(10,31,68,0.10);  /* medium shadow - hover state */
+  --shadow-lg:0 20px 60px rgba(10,31,68,0.14); /* large shadow - featured elements */
+  --font-display:'Poppins',sans-serif; /* font for headings/titles */
+  --font-body:'Inter',sans-serif;      /* font for paragraphs/body text */
+  --maxw:1180px;                /* max width of the content container on large screens */
+}
+
+/* ---------- 2. GLOBAL RESET ----------
+   Browsers add their own default spacing/styles.
+   This section removes those so everything is predictable. */
+*{
+  margin:0;              /* remove default margin on every element */
+  padding:0;              /* remove default padding on every element */
+  box-sizing:border-box;  /* padding/border are included inside an element's width, not added on top */
+}
+
+/* Smooth scrolling when clicking nav links like "#about" */
+html{
+  scroll-behavior:smooth;
+}
+
+/* Accessibility: if the user's OS says "reduce motion", turn off animations.
+   Some people get dizzy/uncomfortable with motion, so we respect that setting. */
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *{
+    animation-duration:0.001ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:0.001ms !important;
+    scroll-behavior:auto !important;
+  }
+}
+
+/* Base page styling applied to the whole <body> */
+body{
+  font-family:var(--font-body);   /* use Inter as the default text font */
+  color:var(--text);              /* default text color = navy */
+  background:var(--bg);           /* page background = white */
+  line-height:1.6;                /* spacing between lines of text, for readability */
+  -webkit-font-smoothing:antialiased; /* makes fonts render smoother on Mac/Chrome */
+}
+
+img{
+  max-width:100%;   /* images never overflow their container */
+  display:block;    /* removes the small gap browsers add under inline images */
+}
+
+a{
+  color:inherit;          /* links use the surrounding text color, not default blue */
+  text-decoration:none;   /* remove underline from links */
+}
+
+ul{
+  list-style:none;  /* remove bullet points from all lists by default */
+}
+
+/* Vertical spacing for every <section> on the page */
+section{
+  padding:100px 0;
+}
+
+/* The .container class centers content and limits its width
+   so text doesn't stretch edge-to-edge on wide screens. */
+.container{
+  max-width:var(--maxw);
+  margin:0 auto;      /* centers the container horizontally */
+  padding:0 32px;     /* left/right breathing room on smaller screens */
+}
+
+/* Headings use the display font (Poppins) and navy color */
+h1,h2,h3,h4{
+  font-family:var(--font-display);
+  color:var(--navy);
+  letter-spacing:-0.02em; /* slightly tighter letter spacing looks more "designed" */
+}
+
+/* Small uppercase label used above section titles, e.g. "ABOUT" */
+.eyebrow{
+  font-family:var(--font-body);
+  font-weight:700;
+  font-size:12.5px;
+  letter-spacing:0.14em;     /* wide letter spacing for a label/tag look */
+  text-transform:uppercase;
+  color:var(--royal);
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:14px;
+}
+/* Small saffron dash before every eyebrow label, purely decorative */
+.eyebrow::before{
+  content:'';
+  width:20px;
+  height:2px;
+  background:var(--saffron);
+  display:inline-block;
+  border-radius:2px;
+}
+
+/* Wrapper used above most sections: eyebrow + heading + short description */
+.section-head{
+  max-width:640px;     /* keeps intro text from stretching too wide to read comfortably */
+  margin-bottom:56px;
+}
+.section-head h2{
+  font-size:clamp(28px,4vw,38px); /* responsive font size: min 28px, scales with viewport, max 38px */
+  margin-bottom:14px;
+}
+.section-head p{
+  color:var(--text-muted);
+  font-size:16.5px;
+}
+
+/* Accessibility: visible outline when navigating by keyboard (Tab key) */
+:focus-visible{
+  outline:3px solid var(--saffron);
+  outline-offset:3px;
+  border-radius:4px;
+}
+
+/* ---------- 3. BUTTONS ----------
+   Shared button styles, reused across hero, nav, projects, contact, etc. */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:14px 28px;
+  border-radius:10px;
+  font-weight:600;
+  font-size:15px;
+  font-family:var(--font-body);
+  cursor:pointer;
+  border:none;
+  transition:transform .2s ease, box-shadow .2s ease, background .2s ease; /* smooth hover effect */
+  white-space:nowrap; /* prevents button text from wrapping to a second line */
+}
+
+/* Primary button = solid royal blue (main call-to-action, e.g. "View My Projects") */
+.btn-primary{
+  background:var(--royal);
+  color:#fff;
+  box-shadow:0 6px 20px rgba(41,82,204,0.28);
+}
+.btn-primary:hover{
+  background:var(--royal-light);
+  transform:translateY(-2px); /* subtle "lift" effect on hover */
+  box-shadow:0 10px 26px rgba(41,82,204,0.34);
+}
+
+/* Accent button = solid saffron (used for "Download Resume" etc.) */
+.btn-accent{
+  background:var(--saffron);
+  color:var(--navy-deep);
+  box-shadow:0 6px 20px rgba(245,166,35,0.30);
+}
+.btn-accent:hover{
+  background:var(--saffron-dark);
+  transform:translateY(-2px);
+}
+
+/* Outline button = transparent background with a border (secondary actions) */
+.btn-outline{
+  background:transparent;
+  color:var(--navy);
+  border:1.5px solid var(--border);
+}
+.btn-outline:hover{
+  border-color:var(--royal);
+  color:var(--royal);
+  transform:translateY(-2px);
+}
+
+/* Smaller button variant, used in nav bar and project cards */
+.btn-sm{
+  padding:9px 16px;
+  font-size:13.5px;
+  border-radius:8px;
+}
+
+/* ---------- 4. NAVBAR ----------
+   The sticky bar at the very top of the page. */
+header{
+  position:sticky;   /* stays fixed to the top as the user scrolls down */
+  top:0;
+  z-index:1000;       /* keeps navbar above all other content */
+  background:rgba(255,255,255,0.85); /* semi-transparent white */
+  backdrop-filter:blur(10px);        /* blurs whatever scrolls behind the navbar (glass effect) */
+  -webkit-backdrop-filter:blur(10px); /* Safari-specific version of the line above */
+  border-bottom:1px solid var(--border);
+}
+
+/* Flex row containing logo (left) + nav links + buttons (right) */
+.nav-wrap{
+  display:flex;
+  align-items:center;
+  justify-content:space-between; /* pushes logo to far left, links/buttons to far right */
+  height:76px;
+}
+
+/* Site name/logo text in the navbar */
+.logo{
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:19px;
+  color:var(--navy);
+}
+.logo span{
+  color:var(--saffron); /* the little dot/accent character inside the logo */
+}
+
+/* Desktop navigation links (About, Skills, Projects...) */
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:34px; /* spacing between each nav link */
+}
+.nav-links a{
+  font-weight:500;
+  font-size:14.5px;
+  color:var(--text-muted);
+  transition:color .2s;
+  position:relative;
+}
+.nav-links a:hover{
+  color:var(--navy); /* links darken on hover to show interactivity */
+}
+
+/* Right-side group in navbar: "View Resume" + "Download Resume" + hamburger */
+.nav-cta{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+/* Hamburger menu icon - hidden by default, shown only on mobile (see media queries) */
+.hamburger{
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  background:none;
+  border:none;
+  cursor:pointer;
+  padding:8px;
+  z-index:1100; /* stays above the mobile menu overlay */
+}
+.hamburger span{
+  width:24px;
+  height:2.5px;
+  background:var(--navy);
+  border-radius:2px;
+  transition:.3s; /* smooth animation when turning into an "X" */
+}
+/* When JS adds the "open" class, the 3 bars rotate/fade into an X shape */
+.hamburger.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg);}
+
+/* Full-screen mobile menu overlay - hidden until hamburger is tapped */
+.mobile-menu{
+  display:none;              /* hidden by default */
+  position:fixed;
+  top:76px;                  /* starts right below the navbar */
+  left:0;right:0;bottom:0;   /* covers the rest of the screen */
+  background:#fff;
+  z-index:1050;
+  padding:36px 32px;
+  flex-direction:column;
+  gap:6px;
+  overflow-y:auto;           /* scrollable if links overflow screen height */
+}
+.mobile-menu.open{
+  display:flex;  /* JS toggles this class to show the menu */
+}
+.mobile-menu a{
+  padding:16px 4px;
+  font-size:17px;
+  font-weight:600;
+  border-bottom:1px solid var(--border); /* divider line between mobile menu items */
+  color:var(--navy);
+}
+.mobile-menu .btn{
+  margin-top:20px;
+  width:100%; /* full-width button inside mobile menu */
+}
+
+/* ---------- 5. HERO SECTION ----------
+   The big introduction section at the top of the page. */
+.hero{
+  padding:88px 0 90px;
+  position:relative;
+  overflow:hidden; /* prevents floating chips from causing horizontal scroll */
+  background:linear-gradient(180deg,#F8FAFF 0%, #FFFFFF 70%); /* subtle top-to-bottom fade */
+}
+
+/* Two-column layout: text on the left, photo/visual on the right */
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.15fr 0.85fr; /* text column slightly wider than photo column */
+  gap:56px;
+  align-items:center;
+}
+
+.hero h1{
+  font-size:clamp(34px,5vw,54px); /* responsive heading size */
+  line-height:1.1;
+  margin:16px 0 20px;
+}
+.hero h1 .accent{
+  color:var(--royal); /* highlights part of the heading in blue */
+}
+.hero p.desc{
+  color:var(--text-muted);
+  font-size:17px;
+  max-width:520px; /* keeps the paragraph from stretching too wide */
+  margin-bottom:34px;
+}
+.hero-ctas{
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap; /* buttons wrap to a new line on very small screens */
+}
+
+/* Right-side visual wrapper (photo frame + floating chips) */
+.hero-visual{
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* Placeholder profile photo box - replace with a real <img> later */
+.hero-photo-frame{
+  width:100%;
+  max-width:360px;
+  aspect-ratio:1/1.05; /* keeps the box nearly square regardless of screen width */
+  border-radius:24px;
+  background:linear-gradient(145deg,var(--navy),var(--royal));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:15px;
+  letter-spacing:0.05em;
+  position:relative;
+  box-shadow:var(--shadow-lg);
+}
+.hero-photo-frame .ph-label{
+  opacity:0.85;
+  text-align:center;
+  padding:20px;
+}
+
+/* Small floating labels ("Frontend", "Backend"...) around the photo */
+.float-chip{
+  position:absolute;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:10px 14px;
+  font-size:13px;
+  font-weight:600;
+  color:var(--navy);
+  box-shadow:var(--shadow-md);
+  display:flex;
+  align-items:center;
+  gap:8px;
+  animation:float 5s ease-in-out infinite; /* gentle up/down floating loop */
+}
+.float-chip .dot{
+  width:8px;
+  height:8px;
+  border-radius:50%; /* makes the small square into a circle */
+}
+/* Each chip is positioned differently around the photo, with a different
+   animation delay so they don't all float in sync (looks more natural) */
+.chip-fe{top:2%;left:-6%;animation-delay:0s;}
+.chip-fe .dot{background:var(--royal);}
+.chip-be{top:32%;right:-10%;animation-delay:1.1s;}
+.chip-be .dot{background:var(--saffron);}
+.chip-db{bottom:20%;left:-10%;animation-delay:2.2s;}
+.chip-db .dot{background:#2E9E6B;}
+.chip-api{bottom:-2%;right:2%;animation-delay:0.6s;}
+.chip-api .dot{background:#8B5CF6;}
+
+/* Keyframes for the floating chip animation: moves up 10px and back down */
+@keyframes float{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-10px);}
+}
+
+/* ---------- 6. TECH STACK STRIP ----------
+   Dark navy bar right under the hero, listing tech categories. */
+.tech-strip{
+  background:var(--navy);
+  padding:44px 0;
+}
+.tech-strip .container{
+  display:grid;
+  grid-template-columns:repeat(4,1fr); /* 4 equal columns: Frontend/Backend/Database/Tools */
+  gap:28px;
+}
+.tech-col h4{
+  color:var(--saffron);
+  font-size:12.5px;
+  text-transform:uppercase;
+  letter-spacing:0.1em;
+  margin-bottom:10px;
+  font-weight:700;
+}
+.tech-col p{
+  color:#C9D4EA; /* light blue-gray text, readable on the dark navy background */
+  font-size:14.5px;
+}
+
+/* ---------- 7. ABOUT SECTION ---------- */
+.about-grid{
+  display:grid;
+  grid-template-columns:1.3fr 0.7fr; /* text on the left, "Quick Facts" box on the right */
+  gap:56px;
+  align-items:start;
+}
+.about-grid p{
+  color:var(--text-muted);
+  margin-bottom:16px;
+  font-size:16px;
+}
+
+/* The boxed "Quick Facts" panel (Role / Location / Education) */
+.quick-facts{
+  background:var(--bg-soft);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:28px;
+}
+.quick-facts h4{
+  font-size:13px;
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  color:var(--royal);
+  margin-bottom:18px;
+}
+/* Each row inside Quick Facts, e.g. "Role  ―  Full Stack Developer" */
+.qf-row{
+  display:flex;
+  justify-content:space-between; /* label on the left, value on the right */
+  padding:12px 0;
+  border-bottom:1px solid var(--border); /* thin divider between rows */
+  font-size:14.5px;
+}
+.qf-row:last-child{
+  border-bottom:none; /* no divider after the last row */
+}
+.qf-row span:first-child{
+  color:var(--text-muted); /* label text is muted */
+}
+.qf-row span:last-child{
+  font-weight:600;      /* value text is bold */
+  text-align:right;
+}
+
+/* ---------- 8. SKILLS SECTION ---------- */
+.skills-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr); /* 3 skill cards per row on desktop */
+  gap:20px;
+}
+.skill-card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:26px;
+  box-shadow:var(--shadow-sm);
+  transition:transform .2s, box-shadow .2s; /* smooth hover lift */
+}
+.skill-card:hover{
+  transform:translateY(-4px);
+  box-shadow:var(--shadow-md);
+}
+.skill-card h4{
+  font-size:15px;
+  color:var(--royal);
+  text-transform:uppercase;
+  letter-spacing:0.06em;
+  margin-bottom:16px;
+}
+/* Wrapper for the little skill "pills" (badges) inside each card */
+.badge-row{
+  display:flex;
+  flex-wrap:wrap; /* badges wrap onto multiple lines automatically */
+  gap:8px;
+}
+.badge{
+  background:var(--bg-soft);
+  border:1px solid var(--border);
+  color:var(--navy);
+  font-size:13px;
+  font-weight:600;
+  padding:7px 12px;
+  border-radius:8px;
+}
+
+/* ---------- 9. ARCHITECTURE DIAGRAM SECTION ---------- */
+.arch-section{
+  background:var(--bg-soft); /* light gray-blue background to separate it from Skills above */
+}
+
+/* Vertical flow of boxes: User -> Frontend -> API -> Backend -> Database -> Deployment */
+.arch-flow{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:0;
+  max-width:520px;
+  margin:0 auto; /* centers the whole diagram horizontally */
+}
+.arch-node{
+  width:100%;
+  background:#fff;
+  border:1.5px solid var(--border);
+  border-radius:var(--radius-sm);
+  padding:18px 22px;
+  text-align:center;
+  box-shadow:var(--shadow-sm);
+  position:relative;
+  opacity:0;                      /* starts invisible... */
+  animation:fadeUp .6s ease forwards; /* ...then fades/slides into view (see keyframes below) */
+}
+.arch-node h5{
+  font-size:15.5px;
+  color:var(--navy);
+  margin-bottom:4px;
+}
+.arch-node span{
+  font-size:13px;
+  color:var(--text-muted);
+}
+/* JS cycles this class through each node to spotlight it, step by step */
+.arch-node.active{
+  border-color:var(--royal);
+  box-shadow:0 0 0 4px rgba(41,82,204,0.10); /* soft glow ring around the active node */
+}
+/* Downward arrow between each node */
+.arch-arrow{
+  color:var(--saffron);
+  font-size:20px;
+  padding:6px 0;
+  opacity:0;
+  animation:fadeUp .6s ease forwards;
+}
+/* Keyframes: element fades in while sliding up slightly */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(14px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+/* ---------- 10. PROJECTS SECTION ---------- */
+.project-card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:20px;
+  overflow:hidden; /* keeps rounded corners clean even with the image/gradient inside */
+  box-shadow:var(--shadow-sm);
+  margin-bottom:32px;
+  transition:box-shadow .25s, transform .25s;
+}
+.project-card:hover{
+  box-shadow:var(--shadow-lg);
+  transform:translateY(-3px);
+}
+
+/* Top part of each project card: screenshot (left) + text details (right) */
+.project-top{
+  display:grid;
+  grid-template-columns:0.9fr 1.1fr;
+}
+
+/* Placeholder "screenshot" area - replace with a real project image later */
+.project-shot{
+  background:linear-gradient(135deg,var(--navy),var(--royal));
+  min-height:280px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-family:var(--font-display);
+  font-weight:600;
+  font-size:14px;
+  text-align:center;
+  padding:20px;
+  position:relative;
+  overflow:hidden;
+}
+/* Subtle diagonal texture overlay on top of the gradient, purely decorative */
+.project-shot::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:repeating-linear-gradient(45deg,rgba(255,255,255,0.04) 0 2px,transparent 2px 20px);
+}
+
+.project-body{
+  padding:32px;
+}
+.project-body .ptag{
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  color:var(--saffron-dark);
+  margin-bottom:8px;
+}
+.project-body h3{
+  font-size:23px;
+  margin-bottom:8px;
+}
+.project-body>.pdesc{
+  color:var(--text-muted);
+  font-size:15px;
+  margin-bottom:18px;
+}
+/* Each labeled block inside a project card: "Problem", "Solution", "Stack" */
+.ps-block{
+  margin-bottom:14px;
+}
+.ps-block strong{
+  display:block;
+  font-size:12.5px;
+  text-transform:uppercase;
+  letter-spacing:0.06em;
+  color:var(--royal);
+  margin-bottom:4px;
+}
+.ps-block p{
+  font-size:14.5px;
+  color:var(--text-muted);
+}
+/* Small tech-name pills inside the "Stack" block, e.g. "React", "MongoDB" */
+.stack-pills{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin-top:6px;
+}
+.stack-pills span{
+  background:var(--bg-soft);
+  border:1px solid var(--border);
+  font-size:12.5px;
+  font-weight:600;
+  padding:5px 10px;
+  border-radius:7px;
+}
+/* Checklist of key features, arranged in 2 columns */
+.feature-list{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:6px 14px;
+  margin:14px 0 20px;
+}
+.feature-list li{
+  font-size:14px;
+  color:var(--text-muted);
+  padding-left:18px;
+  position:relative;
+}
+/* Green checkmark before each feature, added purely with CSS (no image needed) */
+.feature-list li::before{
+  content:'✓';
+  position:absolute;
+  left:0;
+  color:var(--royal);
+  font-weight:700;
+}
+/* Row of buttons at the bottom of each project card: Live Demo / GitHub / Case Study */
+.project-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+/* Clickable bar that expands/collapses the full case study */
+.case-toggle{
+  width:100%;
+  text-align:left;
+  background:var(--bg-soft);
+  border:none;
+  border-top:1px solid var(--border);
+  padding:16px 32px;
+  font-weight:600;
+  font-size:14.5px;
+  color:var(--royal);
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:space-between; /* text on the left, arrow icon on the right */
+}
+.case-toggle .arrow{
+  transition:transform .25s; /* smooth rotation animation */
+}
+/* When JS adds "open", the little arrow flips upside down */
+.case-toggle.open .arrow{
+  transform:rotate(180deg);
+}
+/* The collapsible case-study content itself.
+   max-height starts at 0 (hidden) and JS sets it to the real content
+   height when opened - this allows a smooth expand/collapse animation
+   (you can't smoothly animate "display: none/block" in CSS). */
+.case-detail{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .35s ease;
+  background:var(--bg-soft);
+}
+.case-detail-inner{
+  padding:8px 32px 32px;
+}
+/* Grid of the 18 case-study steps, 2 per row */
+.case-steps{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px 28px;
+  margin-top:12px;
+}
+.case-step{
+  display:flex;
+  gap:12px;
+}
+.case-step .num{
+  font-family:var(--font-display);
+  font-weight:700;
+  color:var(--saffron-dark);
+  font-size:13px;
+  min-width:26px; /* keeps numbers aligned even when they wrap differently */
+}
+.case-step h6{
+  font-size:14px;
+  color:var(--navy);
+  margin-bottom:2px;
+}
+.case-step p{
+  font-size:13px;
+  color:var(--text-muted);
+}
+
+/* ---------- 11. EDUCATION TIMELINE ----------
+   Note: the Experience section has been removed since you're a fresher.
+   This timeline style is reused for Education only. */
+.timeline{
+  position:relative;
+  padding-left:32px;
+  border-left:2px solid var(--border); /* the vertical line running down the timeline */
+}
+.tl-item{
+  position:relative;
+  padding-bottom:40px;
+}
+.tl-item:last-child{
+  padding-bottom:0; /* no extra space after the final timeline entry */
+}
+/* The small circular dot marker on the timeline, placed to the left of each item */
+.tl-item::before{
+  content:'';
+  position:absolute;
+  left:-38px;
+  top:4px;
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  background:var(--royal);
+  border:3px solid #fff;         /* white ring so the dot stands out from the line */
+  box-shadow:0 0 0 2px var(--royal); /* outer blue ring around the white ring */
+}
+.tl-item h4{
+  font-size:18px;
+  margin-bottom:2px;
+}
+.tl-item .tl-sub{
+  color:var(--royal);
+  font-weight:600;
+  font-size:14.5px;
+  margin-bottom:4px;
+}
+.tl-item .tl-date{
+  color:var(--text-muted);
+  font-size:13.5px;
+  margin-bottom:10px;
+  display:block;
+}
+.tl-item ul{
+  margin-top:8px;
+}
+.tl-item ul li{
+  font-size:14.5px;
+  color:var(--text-muted);
+  padding-left:18px;
+  position:relative;
+  margin-bottom:6px;
+}
+.tl-item ul li::before{
+  content:'—';
+  position:absolute;
+  left:0;
+  color:var(--saffron-dark);
+}
+
+/* Generic 2-column layout helper (used for section layouts that need 2 equal halves) */
+.two-col{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:56px;
+}
+
+/* ---------- 12. CERTIFICATIONS SECTION ---------- */
+.cert-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr); /* 3 certificate cards per row on desktop */
+  gap:20px;
+}
+.cert-card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:24px;
+  box-shadow:var(--shadow-sm);
+}
+.cert-card h4{
+  font-size:15.5px;
+  margin-bottom:6px;
+}
+.cert-card p{
+  font-size:13.5px;
+  color:var(--text-muted);
+}
+
+/* ---------- 13. DEVELOPER PROFILES SECTION ---------- */
+.profile-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr); /* 4 profile cards per row: GitHub/LinkedIn/LeetCode/Blog */
+  gap:18px;
+}
+.profile-card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:26px;
+  text-align:center;
+  transition:transform .2s, box-shadow .2s;
+  box-shadow:var(--shadow-sm);
+}
+.profile-card:hover{
+  transform:translateY(-4px);
+  box-shadow:var(--shadow-md);
+  border-color:var(--royal);
+}
+.profile-icon{
+  width:46px;
+  height:46px;
+  border-radius:12px;
+  background:var(--bg-soft);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 14px; /* centers the icon box horizontally */
+  font-size:20px;
+}
+.profile-card h4{
+  font-size:15.5px;
+  margin-bottom:4px;
+}
+.profile-card p{
+  font-size:13px;
+  color:var(--text-muted);
+}
+
+/* ---------- 14. RESUME CTA SECTION ---------- */
+.resume-cta{
+  background:linear-gradient(120deg,var(--navy),var(--royal)); /* eye-catching gradient banner */
+  border-radius:24px;
+  padding:56px;
+  text-align:center;
+  color:#fff;
+}
+.resume-cta h2{
+  color:#fff; /* overrides the default navy heading color, since background is dark here */
+  margin-bottom:12px;
+}
+.resume-cta p{
+  color:#C9D4EA;
+  margin-bottom:28px;
+  font-size:16px;
+}
+.resume-cta .btns{
+  display:flex;
+  gap:16px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+/* ---------- 15. CONTACT SECTION ---------- */
+.contact-grid{
+  display:grid;
+  grid-template-columns:0.9fr 1.1fr; /* contact info on the left, form on the right */
+  gap:56px;
+}
+/* Each row of contact info: icon + label + value (e.g. envelope icon + "Email" + address) */
+.contact-info-item{
+  display:flex;
+  gap:14px;
+  align-items:flex-start;
+  margin-bottom:22px;
+}
+.contact-info-item .ci-icon{
+  width:40px;
+  height:40px;
+  border-radius:10px;
+  background:var(--bg-soft);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0; /* keeps the icon box from shrinking if text is long */
+  font-size:17px;
+}
+.contact-info-item strong{
+  display:block;
+  font-size:14px;
+  color:var(--text-muted);
+  margin-bottom:2px;
+}
+.contact-info-item span{
+  font-weight:600;
+}
+
+/* The contact form card itself */
+form.contact-form{
+  background:var(--bg-soft);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:32px;
+}
+/* Name + Email fields sit side-by-side in a row */
+.form-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+  margin-bottom:16px;
+}
+.form-group{
+  margin-bottom:16px;
+}
+.form-group label{
+  display:block;
+  font-size:13.5px;
+  font-weight:600;
+  margin-bottom:6px;
+  color:var(--navy);
+}
+.form-group input,
+.form-group textarea{
+  width:100%;
+  padding:13px 14px;
+  border:1.5px solid var(--border);
+  border-radius:9px;
+  font-family:var(--font-body);
+  font-size:14.5px;
+  background:#fff;
+  transition:border-color .2s; /* smooth color change when focused */
+}
+.form-group input:focus,
+.form-group textarea:focus{
+  outline:none;              /* remove default browser outline... */
+  border-color:var(--royal); /* ...and use a colored border instead */
+}
+/* Error message text under a field, hidden until validation fails */
+.form-group .err{
+  color:#D14343;
+  font-size:12.5px;
+  margin-top:5px;
+  display:none;
+}
+/* JS adds "invalid" class to a .form-group when that field fails validation */
+.form-group.invalid input,
+.form-group.invalid textarea{
+  border-color:#D14343; /* red border on invalid fields */
+}
+.form-group.invalid .err{
+  display:block; /* reveal the error message text */
+}
+/* Status message shown after submitting (e.g. "Message sent" or "Please fix errors") */
+.form-status{
+  margin-top:14px;
+  font-size:14px;
+  font-weight:600;
+  display:none;
+}
+.form-status.show{
+  display:block; /* JS adds this class to reveal the status message */
+}
+.form-status.success{
+  color:#1E8E5A; /* green text for success */
+}
+.form-status.error{
+  color:#D14343; /* red text for errors */
+}
+/* Disabled state of the submit button while the "message" is sending */
+.btn[disabled]{
+  opacity:0.65;
+  cursor:not-allowed;
+  transform:none !important; /* cancel hover-lift effect while disabled */
+}
+
+/* ---------- 16. FOOTER ---------- */
+footer{
+  background:var(--navy-deep);
+  color:#C9D4EA;
+  padding:56px 0 28px;
+}
+/* Top row of footer: logo, nav links, and social icons */
+.footer-top{
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:28px;
+  margin-bottom:36px;
+}
+.footer-logo{
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:19px;
+  color:#fff;
+  margin-bottom:6px;
+}
+.footer-logo span{
+  color:var(--saffron);
+}
+.footer-nav{
+  display:flex;
+  gap:26px;
+  flex-wrap:wrap;
+}
+.footer-nav a{
+  font-size:14px;
+  color:#C9D4EA;
+}
+.footer-nav a:hover{
+  color:#fff;
+}
+.footer-social{
+  display:flex;
+  gap:16px;
+}
+.footer-social a{
+  width:38px;
+  height:38px;
+  border-radius:9px;
+  background:rgba(255,255,255,0.06);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:15px;
+}
+.footer-social a:hover{
+  background:var(--royal);
+}
+/* Bottom copyright line */
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,0.08);
+  padding-top:24px;
+  font-size:13px;
+  color:#8494B5;
+  text-align:center;
+}
+
+/* ---------- 17. SCROLL-REVEAL ANIMATION HELPER ----------
+   Elements with class "fade-in" start invisible/shifted down.
+   JavaScript (script.js) adds the "visible" class when the element
+   scrolls into view, which triggers the transition below. */
+.fade-in{
+  opacity:0;
+  transform:translateY(24px);
+  transition:opacity .6s ease, transform .6s ease;
+}
+.fade-in.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* ---------- 18. ACCESSIBILITY: SKIP LINK ----------
+   Hidden off-screen until a keyboard user presses Tab, then it
+   appears so they can jump straight to the main content, skipping
+   the whole navbar. Helpful for screen-reader / keyboard users. */
+.skip-link{
+  position:absolute;
+  left:-999px; /* hidden off-screen by default */
+  top:0;
+  background:var(--royal);
+  color:#fff;
+  padding:12px 20px;
+  border-radius:0 0 8px 0;
+  z-index:2000;
+}
+.skip-link:focus{
+  left:0; /* slides into view when focused via keyboard */
+}
+
+/* =====================================================
+   RESPONSIVE BREAKPOINTS
+   Media queries below adjust the layout for smaller
+   screens: tablets first, then mobile phones.
+   ===================================================== */
+
+/* Tablets and small laptops (screen width 980px or less) */
+@media (max-width:980px){
+  .hero-grid{grid-template-columns:1fr;}              /* stack hero text/photo vertically */
+  .hero-visual{order:-1;max-width:280px;margin:0 auto 20px;} /* photo moves above text */
+  .about-grid,.two-col,.contact-grid{grid-template-columns:1fr;} /* stack 2-column sections */
+  .skills-grid{grid-template-columns:repeat(2,1fr);}   /* 2 skill cards per row instead of 3 */
+  .cert-grid{grid-template-columns:repeat(2,1fr);}
+  .profile-grid{grid-template-columns:repeat(2,1fr);}
+  .tech-strip .container{grid-template-columns:repeat(2,1fr);}
+  .project-top{grid-template-columns:1fr;}             /* stack project image above text */
+  .project-shot{min-height:200px;}
+  .case-steps{grid-template-columns:1fr;}              /* single column of case-study steps */
+}
+
+/* Mobile phones (screen width 720px or less) */
+@media (max-width:720px){
+  .nav-links{display:none;}              /* hide desktop nav links */
+  .nav-cta .btn-outline{display:none;}   /* hide "View Resume" button in navbar (still in mobile menu) */
+  .hamburger{display:flex;}              /* show the hamburger icon */
+  section{padding:64px 0;}               /* reduce vertical spacing to save space */
+  .skills-grid,.cert-grid,.profile-grid{grid-template-columns:1fr 1fr;}
+  .feature-list{grid-template-columns:1fr;} /* single-column feature checklist */
+  .form-row{grid-template-columns:1fr;}     /* stack Name/Email fields vertically */
+  .footer-top{flex-direction:column;}
+}
+
+/* Small phones (screen width 480px or less) */
+@media (max-width:480px){
+  .skills-grid,.cert-grid,.profile-grid{grid-template-columns:1fr;} /* single column everywhere */
+  .container{padding:0 20px;}     /* slightly less side padding on very narrow screens */
+  .resume-cta{padding:36px 24px;}
+}
