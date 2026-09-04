@@ -1,612 +1,479 @@
 <!DOCTYPE html>
-<!-- lang="en" tells browsers/screen readers the page content is in English -->
+
 <html lang="en">
 <head>
-  <!-- Character encoding - needed so special characters display correctly -->
-  <meta charset="UTF-8">
-  <!-- Makes the page render correctly on mobile screens instead of zoomed-out desktop view -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Browser tab title -->
-  <title>[Anuj Rajput] — Full Stack Developer</title>
+<meta charset="UTF-8">
 
-  <!-- SEO: short description shown in Google search results -->
-  <meta name="description" content="Portfolio of [Anuj Rajput], a Full Stack Developer building modern, scalable web applications using frontend, backend, database, and API technologies.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Open Graph tags: control how this page looks when shared as a link
-       on WhatsApp, LinkedIn, Twitter/X, etc. -->
-  <meta property="og:title" content="[Anuj Rajput] — Full Stack Developer">
-  <meta property="og:description" content="I build modern, scalable, and user-focused web applications from frontend to backend.">
-  <meta property="og:type" content="website">
+<title>[Anuj Rajput] — Full Stack Developer</title>
 
-  <!-- preconnect hints tell the browser to start connecting to Google
-       Fonts early, slightly speeding up font loading -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Loading the two fonts used across the site: Poppins (headings) and Inter (body text) -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Link to the external stylesheet - all visual styling lives there -->
-  <link rel="stylesheet" href="style.css">
+<meta name="description" content="Portfolio of [Anuj Rajput], a Full Stack Developer building modern, scalable web applications using frontend, backend, database, and API technologies.">
+
+
+<meta property="og:title" content="[Anuj Rajput] — Full Stack Developer">
+<meta property="og:description" content="I build modern, scalable, and user-focused web applications from frontend to backend.">
+<meta property="og:type" content="website">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- Accessibility: hidden link that appears when a keyboard user presses
-     Tab, letting them skip straight to the main content (bypassing the navbar) -->
+
 <a href="#main" class="skip-link">Skip to content</a>
 
-<!-- ============ NAVBAR ============ -->
+
 <header>
-  <div class="container nav-wrap">
-    <!-- Site logo/name, links back to the top of the page -->
-    <a href="#top" class="logo">[Anuj<span> </span>Rajput]</a>
+<div class="container nav-wrap">
 
-    <!-- Desktop navigation links (hidden on mobile via CSS media query) -->
-    <nav class="nav-links" aria-label="Primary">
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#education">Education</a>
-      <a href="#contact">Contact</a>
-    </nav>
+<a href="#top" class="logo">[Anuj<span> </span>Rajput]</a>
 
-    <!-- Right-side buttons + hamburger icon -->
-    <div class="nav-cta">
-      <a href="#resume" class="btn btn-outline btn-sm">View Resume</a> 
-     <!-- <a href="[file:///C:/Anuj/A2.pdf]" class="btn btn-accent btn-sm" download>Download Resume</a> -->
 
-      <!-- Hamburger button - only visible on mobile screens.
-           aria-expanded is updated by JS to tell screen readers if the menu is open. -->
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </div>
+<nav class="nav-links" aria-label="Primary">
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#projects">Projects</a>
+<a href="#education">Education</a>
+<a href="#contact">Contact</a>
+</nav>
 
-  <!-- Full-screen mobile menu overlay - hidden until the hamburger is tapped (controlled by script.js) -->
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#education">Education</a>
-    <a href="#contact">Contact</a>
-    <a href="#resume">Resume</a>
-    <a href="[file:///C:/Anuj/A2.pdf]" class="btn btn-accent" download>Download Resume</a>
-  </div>
+
+<div class="nav-cta">
+<a href="https://github.com/anuj-raj-01/Portfolio/blob/main/A2.pdf" class="btn btn-outline btn-sm">View Resume</a> 
+<a href="https://github.com/anuj-raj-01/Portfolio/blob/main/A2.pdf" class="btn btn-accent btn-sm" download>Download Resume</a>
+
+
+<button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu">
+<span></span><span></span><span></span>
+</button>
+</div>
+</div>
+
+
+<div class="mobile-menu" id="mobileMenu">
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#projects">Projects</a>
+<a href="#education">Education</a>
+<a href="#contact">Contact</a>
+<a href="#resume">Resume</a>
+<a href="https://github.com/anuj-raj-01/Portfolio/blob/main/A2.pdf" class="btn btn-accent" download>Download Resume</a>
+</div>
 </header>
 
-<!-- id="main" is the target of the "Skip to content" link above -->
 <main id="main">
 
-  <!-- ============ HERO SECTION ============ -->
-  <section class="hero" id="top">
-    <div class="container hero-grid">
+<section class="hero" id="top">
+<div class="container hero-grid">
 
-      <!-- Left column: heading, description, call-to-action buttons -->
-      <!-- "fade-in visible" - this block is visible immediately (no scroll animation needed since it's already on screen on page load) -->
-      <div class="fade-in visible">
-        <span class="eyebrow">Full Stack Developer</span>
-        <h1>Hi, I'm Anuj Rajput, <br><span class="accent"> </span></h1>
-        <p class="desc">a Full Stack Developer focused on creating modern, responsive, and scalable web applications. I love solving real-world problems through clean code and intuitive design. I'm continuosly learning new technologies and turning ideas into meaningful digital experiences.</p>
-        <div class="hero-ctas">
-          <a href="#projects" class="btn btn-primary">View My Projects</a>
-          <a href="[C:\Users\HP\OneDrive\Desktop\A2.pdf]" class="btn btn-outline" download>Download Resume</a>
-        </div>
-      </div>
 
-      <!-- Right column: placeholder profile photo + floating tech chips -->
-      <div class="hero-visual">
-        <div class="hero-photo-frame">
-          <div class="ph-label">[PROFILE<br>PHOTO]</div>
-        </div>
-        <!-- Each chip floats gently via CSS animation, styled + positioned in styles.css -->
-        <div class="float-chip chip-fe"><span class="dot"></span>Frontend</div>
-        <div class="float-chip chip-be"><span class="dot"></span>Backend</div>
-        <div class="float-chip chip-db"><span class="dot"></span>Database</div>
-        <div class="float-chip chip-api"><span class="dot"></span>REST API</div>
-      </div>
-    </div>
-  </section>
+<div class="fade-in visible">
+<span class="eyebrow">Full Stack Developer</span>
+<h1>Hi, I'm Anuj Rajput, <br><span class="accent"> </span></h1>
+<p class="desc">a Full Stack Developer focused on creating modern, responsive, and scalable web applications. I love solving real-world problems through clean code and intuitive design. I'm continuosly learning new technologies and turning ideas into meaningful digital experiences.</p>
+<div class="hero-ctas">
+<a href="#projects" class="btn btn-primary">View My Projects</a>
+<a href="https://github.com/anuj-raj-01/Portfolio/blob/main/A2.pdf" class="btn btn-outline" download>Download Resume</a>
+</div>
+</div>
 
-  <!-- ============ TECH STACK STRIP ============
-       Dark navy bar summarizing the 4 main tech categories -->
-  <div class="tech-strip">
-    <div class="container">
-      <div class="tech-col">
-        <h4>Frontend</h4>
-        <p>HTML • CSS • JavaScript • React</p>
-      </div>
-      <div class="tech-col">
-        <h4>Backend</h4>
-        <p>Java • Spring Boot • Node.js • Express</p>
-      </div>
-      <div class="tech-col">
-        <h4>Database</h4>
-        <p>MySQL • PostgreSQL • MongoDB</p>
-      </div>
-      <div class="tech-col">
-        <h4>Tools</h4>
-        <p>Git • GitHub • Docker <!--• Postman --></p>
-      </div>
-    </div>
-  </div>
 
-  <!-- ============ ABOUT SECTION ============ -->
-  <section id="about">
-    <div class="container">
-      <div class="section-head fade-in">
-        <span class="eyebrow">About</span>
-        <!-- <h2>I work across the entire application lifecycle.</h2> -->
-      </div>
-      <div class="about-grid">
-        <!-- Left: paragraphs describing your approach and background -->
-        <div class="fade-in">
-         <!--  <p>I design, build, and ship complete web applications — not just interfaces. My work spans frontend development, backend services, REST API design, database architecture, authentication, testing, and deployment.</p>
-          <p>I approach problems by first understanding the real workflow a user or system needs, then choosing the simplest architecture that can reliably support it — from schema design through to the API contracts and UI that sit on top.</p>
-          <p>I'm currently deepening my knowledge of [CURRENT LEARNING FOCUS — e.g. cloud deployment, system design], and I enjoy taking a project from an empty repository to a deployed, working product.</p> -->
-        <p>I'm <b>Anuj Rajput</b>, an aspiring <b>Full Stack Developer</b> who enjoys learning and building web applications. I'm currently strengthening my skills in frontend, backend, databases, and APIs while working on real-world projects. My goal is to become a professional Full Stack Developer and build meaningful digital solutions.</p>
-        <!-- <p>My goal is to become a professional Full Stack Developer and build meaningful digital solutions.</p> -->
-        </div>
-        <!-- Right: boxed "Quick Facts" panel -->
-        <div class="quick-facts fade-in">
-          <h4>Quick Facts</h4>
-          <div class="qf-row"><span>Role</span><span>Full Stack Developer</span></div>
-          <div class="qf-row"><span>Location</span><span>Kanpur, UttarPradesh</span></div>
-          <div class="qf-row"><span>Education</span><span>[Computer Science Undergraduate]</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
+<div class="hero-visual">
+<div class="hero-photo-frame">
+<div class="ph-label">[PROFILE<br>PHOTO]</div>
+</div>
 
-  <!-- ============ SKILLS SECTION ============
-       Light gray-blue background to visually separate it from About -->
-  <section id="skills" style="background:var(--bg-soft);">
-    <div class="container">
-      <div class="section-head fade-in">
-        <span class="eyebrow">Skills</span>
-        <!--<h2>Technologies I work with.</h2>
-        <p>Grouped by where they sit in the stack — updated as I confirm real usage.</p> -->
-      </div>
-      <div class="skills-grid">
-        <!-- Each .skill-card is one category (Frontend, Backend, etc.)
-             containing a row of small "badge" pills -->
-        <div class="skill-card fade-in">
-          <h4>Frontend</h4>
-          <div class="badge-row">
-            <span class="badge">HTML5</span><span class="badge">CSS3</span><span class="badge">JavaScript</span>
-            <span class="badge">TypeScript</span><span class="badge">React</span><span class="badge">Tailwind CSS</span>
-            <!-- <span class="badge">Responsive Design</span> -->
-          </div>
-        </div>
-        <div class="skill-card fade-in">
-          <h4>Backend</h4>
-          <div class="badge-row">
-            <span class="badge">Java</span><span class="badge">Spring Boot</span><span class="badge">Node.js</span>
-            <span class="badge">Express.js</span><span class="badge">REST APIs</span>
-          </div>
-        </div>
-        <div class="skill-card fade-in">
-          <h4>Database</h4>
-          <div class="badge-row">
-            <span class="badge">MySQL</span><span class="badge">PostgreSQL</span><span class="badge">MongoDB</span>
-          </div>
-        </div>
-        <div class="skill-card fade-in">
-          <h4>DevOps / Deployment</h4>
-          <div class="badge-row">
-            <span class="badge">Git</span><span class="badge">GitHub</span><span class="badge">Docker</span>
-            <span class="badge">Netlify</span><span class="badge">Cloud Deployment</span>
-          </div>
-        </div>
-        <div class="skill-card fade-in">
-          <h4>Tools</h4>
-          <div class="badge-row">
-            <span class="badge">VS Code</span><span class="badge">IntelliJ IDEA</span> <!--<span class="badge">Postman</span> -->
-            <span class="badge">DOSBox</span>
-          </div>
-       </div>
-        <div class="skill-card fade-in">
-          <h4>Core Concepts</h4>
-          <div class="badge-row">
-            <span class="badge">OOP</span><span class="badge">Data Structures</span><span class="badge">Computer Network</span>
-            <span class="badge">Auth & Authorization</span><span class="badge">DB Design</span><span class="badge">Operating System</span>
-            <span class="badge">System Design</span>
+<div class="float-chip chip-fe"><span class="dot"></span>Frontend</div>
+<div class="float-chip chip-be"><span class="dot"></span>Backend</div>
+<div class="float-chip chip-db"><span class="dot"></span>Database</div>
+<div class="float-chip chip-api"><span class="dot"></span>REST API</div>
+</div>
+</div>
+</section>
 
-         
 
-          </div>
-        </div>
-           
-        <div class="skill-card fade-in">
-          <h4>Programming Skills</h4>
-          <div class="badge-row">
-            <span class="badge">C++</span><span class="badge">Python</span><span class="badge">Java</span>
-             <!-- <span class="badge">DOSBox</span> -->
-          </div>
-        </div>  
+<div class="tech-strip">
+<div class="container">
+<div class="tech-col">
+<h4>Frontend</h4>
+<p>HTML • CSS • JavaScript • React</p>
+</div>
+<div class="tech-col">
+<h4>Backend</h4>
+<p>Java • Spring Boot • Node.js • Express</p>
+</div>
+<div class="tech-col">
+<h4>Database</h4>
+<p>MySQL • PostgreSQL • MongoDB</p>
+</div>
+<div class="tech-col">
+<h4>Tools</h4>
+<p>Git • GitHub • Docker <!--• Postman --></p>
+</div>
+</div>
+</div>
 
-      </div>
-    </div>
-  </section>
 
-  <!-- ============ ARCHITECTURE DIAGRAM SECTION ============
-       Vertical flow diagram animated by script.js (fade-in stagger + rotating highlight) -->
-  <!-- <section class="arch-section" id="architecture">
-    <div class="container">
-      <div class="section-head fade-in">
-        <span class="eyebrow">How I Build</span>
-        <h2>Full-stack application architecture.</h2>
-        <p>A consistent flow I use across projects — from the user's screen to a deployed, running system.</p>
-      </div> -->
-      <!-- id="archFlow" is targeted by script.js to control the animation -->
-     <!--  <div class="arch-flow" id="archFlow">
-        <div class="arch-node" data-i="0"><h5>User</h5><span>Interacts with the application</span></div>
-        <div class="arch-arrow" data-i="1">↓</div>
-        <div class="arch-node" data-i="2"><h5>Frontend</h5><span>React / HTML / CSS / JavaScript</span></div>
-        <div class="arch-arrow" data-i="3">↓</div>
-        <div class="arch-node" data-i="4"><h5>REST API</h5><span>Request / response contract layer</span></div>
-        <div class="arch-arrow" data-i="5">↓</div>
-        <div class="arch-node" data-i="6"><h5>Backend</h5><span>Java / Spring Boot / Node.js</span></div>
-        <div class="arch-arrow" data-i="7">↓</div>
-        <div class="arch-node" data-i="8"><h5>Database</h5><span>MySQL / PostgreSQL / MongoDB</span></div>
-        <div class="arch-arrow" data-i="9">↓</div>
-        <div class="arch-node" data-i="10"><h5>Deployment</h5><span>Cloud / Docker / CI-CD</span></div>
-      </div>
-    </div>
-  </section>  -->
+<section id="about">
+<div class="container">
+<div class="section-head fade-in">
+<span class="eyebrow">About</span>
 
-  <!-- ============ PROJECTS SECTION ============
-       Most important section - the featured LokPath project plus
-       3 more generic project card templates. -->
-  <section id="projects">
-    <div class="container">
-      <div class="section-head fade-in">
-        <span class="eyebrow">Featured Projects</span>
-        <h2>Products I've designed and built end-to-end.</h2>
-        <p>Each project below reflects a different full-stack capability — from e-governance platforms to real-time systems.</p>
-      </div>
+</div>
+<div class="about-grid">
 
-      <!-- ===== Featured project: LokPath ===== -->
-      <article class="project-card fade-in">
-        <div class="project-top">
-          <!-- Placeholder screenshot area - replace with a real <img> once you have one -->
-          <div class="project-shot" style="background:linear-gradient(135deg,#0A1F44,#123A7A);">[LOKPATH SCREENSHOT]</div>
-          <div class="project-body">
-            <div class="ptag">Featured Project · E-Governance</div>
-            <h3>LokPath</h3>
-            <p class="pdesc">Citizen Information & RTI Platform</p>
-            <div class="ps-block">
-              <strong>Problem</strong>
-              <p>Citizens often struggle to discover the right information and navigate RTI (Right to Information) requests through fragmented, unclear channels.</p>
-            </div>
-            <div class="ps-block">
-              <strong>Solution</strong>
-              <p>A full-stack platform with a responsive citizen-facing interface, structured RTI request workflows, and a support system — built to make government information genuinely accessible.</p>
-            </div>
-            <div class="ps-block">
-              <strong>Stack</strong>
-              <div class="stack-pills">
-                <span>[Frontend framework]</span><span>[Backend framework]</span><span>[Database]</span><span>[Tools]</span>
-              </div>
-            </div>
-            <!-- Checklist of key features, styled with checkmarks via CSS -->
-            <ul class="feature-list">
-              <li>Citizen information discovery</li>
-              <li>RTI request workflow</li>
-              <li>Request management</li>
-              <li>Support / help desk</li>
-              <li>Contact system</li>
-              <li>Responsive design</li>
-            </ul>
-            <div class="project-actions">
-              <a href="[LIVE_DEMO_URL]" class="btn btn-primary btn-sm">Live Demo</a>
-              <a href="[GITHUB_URL]" class="btn btn-outline btn-sm">GitHub</a>
-              <!-- This link is caught by script.js and opens the case study below instead of navigating -->
-             <!-- <a href="#" class="btn btn-outline btn-sm case-open-link">Case Study</a> -->
-            </div>
-          </div>
-        </div>
+<div class="fade-in">
 
-        <!-- Clickable bar that expands/collapses the case study.
-             data-target must match the id of the .case-detail div below it. -->
-        <!-- <button class="case-toggle" data-target="case-lokpath">
-             <span>Full Case Study — 18-stage breakdown</span><span class="arrow">▾</span>
-        </button> -->
-        <!-- Collapsed by default (max-height: 0 in CSS); script.js expands it on click -->
-        <!-- <div class="case-detail" id="case-lokpath">
-          <div class="case-detail-inner">
-            <div class="case-steps">
-              <div class="case-step"><span class="num">01</span><div><h6>Project Overview</h6><p>[Summary of LokPath's purpose and scope.]</p></div></div>
-              <div class="case-step"><span class="num">02</span><div><h6>Problem</h6><p>[The real-world access-to-information problem.]</p></div></div>
-              <div class="case-step"><span class="num">03</span><div><h6>Research</h6><p>[How citizen needs and RTI workflows were studied.]</p></div></div>
-              <div class="case-step"><span class="num">04</span><div><h6>Goals</h6><p>[What the platform set out to achieve.]</p></div></div>
-              <div class="case-step"><span class="num">05</span><div><h6>My Role</h6><p>[Your specific responsibilities on the project.]</p></div></div>
-              <div class="case-step"><span class="num">06</span><div><h6>System Architecture</h6><p>[High-level architecture decisions.]</p></div></div>
-              <div class="case-step"><span class="num">07</span><div><h6>UI/UX Design</h6><p>[Design approach for the citizen-facing UI.]</p></div></div>
-              <div class="case-step"><span class="num">08</span><div><h6>Frontend Development</h6><p>[Frontend build details.]</p></div></div>
-              <div class="case-step"><span class="num">09</span><div><h6>Backend Development</h6><p>[Backend build details.]</p></div></div>
-              <div class="case-step"><span class="num">10</span><div><h6>Database Design</h6><p>[Schema and data modeling notes.]</p></div></div>
-              <div class="case-step"><span class="num">11</span><div><h6>API Development</h6><p>[Key endpoints and contracts.]</p></div></div>
-              <div class="case-step"><span class="num">12</span><div><h6>Auth & Security</h6><p>[Authentication/authorization approach.]</p></div></div>
-              <div class="case-step"><span class="num">13</span><div><h6>Challenges</h6><p>[Notable challenges faced.]</p></div></div>
-              <div class="case-step"><span class="num">14</span><div><h6>Solutions</h6><p>[How challenges were resolved.]</p></div></div>
-              <div class="case-step"><span class="num">15</span><div><h6>Testing</h6><p>[Testing strategy used.]</p></div></div>
-              <div class="case-step"><span class="num">16</span><div><h6>Deployment</h6><p>[Deployment pipeline/hosting.]</p></div></div>
-              <div class="case-step"><span class="num">17</span><div><h6>Final Result</h6><p>[Outcome and impact.]</p></div></div>
-              <div class="case-step"><span class="num">18</span><div><h6>Lessons Learned</h6><p>[Key takeaways.]</p></div></div>
-            </div>
-          </div>
-        </div>
-      </article> -->
+<p>I'm <b>Anuj Rajput</b>, an aspiring <b>Full Stack Developer</b> who enjoys learning and building web applications. I'm currently strengthening my skills in frontend, backend, databases, and APIs while working on real-world projects. My goal is to become a professional Full Stack Developer and build meaningful digital solutions.</p>
 
-      <br>
-      <br>
+</div>
 
-      <!-- ===== Generic project template #2 ===== -->
-      <!-- <article class="project-card fade-in">
-        <div class="project-top">
-          <div class="project-shot">[PROJECT 2 SCREENSHOT]</div>
-          <div class="project-body">
-            <div class="ptag">[Category — e.g. E-commerce]</div>
-            <h3>[Project Name]</h3>
-            <p class="pdesc">[One-line description of what this project does.]</p>
-            <div class="ps-block"><strong>Problem</strong><p>[What real-world problem does it solve?]</p></div>
-            <div class="ps-block"><strong>Solution</strong><p>[What did you build?]</p></div>
-            <div class="ps-block">
-              <strong>Stack</strong>
-              <div class="stack-pills"><span>[Frontend]</span><span>[Backend]</span><span>[Database]</span><span>[Tools]</span></div>
-            </div>
-            <ul class="feature-list">
-              <li>Authentication</li><li>CRUD operations</li><li>REST APIs</li>
-              <li>Database integration</li><li>Responsive UI</li><li>Role-based access</li>
-            </ul>
-            <div class="project-actions">
-              <a href="[LIVE_DEMO_URL]" class="btn btn-primary btn-sm">Live Demo</a>
-              <a href="[GITHUB_URL]" class="btn btn-outline btn-sm">GitHub</a>
-              <a href="#" class="btn btn-outline btn-sm case-open-link">Case Study</a>
-            </div>
-          </div>
-        </div>
-        <button class="case-toggle" data-target="case-proj2">
-          <span>Full Case Study</span><span class="arrow">▾</span>
-        </button>
-        <div class="case-detail" id="case-proj2">
-          <div class="case-detail-inner">
-            <p style="color:var(--text-muted);font-size:14.5px;">[Add an 18-stage case study for this project, following the same structure as LokPath, once details are confirmed.]</p>
-          </div>
-        </div>
-      </article>  -->
+<div class="quick-facts fade-in">
+<h4>Quick Facts</h4>
+<div class="qf-row"><span>Role</span><span>Full Stack Developer</span></div>
+<div class="qf-row"><span>Location</span><span>Kanpur, UttarPradesh</span></div>
+<div class="qf-row"><span>Education</span><span>[Computer Science Undergraduate]</span></div>
+</div>
+</div>
+</div>
+</section>
 
-      <!-- ===== Generic project template #3 ===== -->
-      <article class="project-card fade-in">
-        <div class="project-top">
-          <div class="project-shot">[PROJECT 2 SCREENSHOT]</div>
-          <div class="project-body">
-            <div class="ptag">Featured project · Real-time / API-driven</div>
-            <h3>Weather Detector</h3>
-            <p class="pdesc">A Simple weather applications that provides real-time weather information based on the user's selected location.</p>
-            <div class="ps-block"><strong>Problem</strong><p>Finding accurate and up-to-date weather information for a specific location can be inconvenient when users need to check multiple sources.</p></div>
-            <div class="ps-block"><strong>Solution</strong><p>Built a responsive weather applications that uses a weather API to fetch and display real-time weather information, including temperature, weather conditions, humidity, and wind details.</p></div>
-            <div class="ps-block">
-              <strong>Stack</strong>
-              <div class="stack-pills"><span>HTML, CSS, JavaScript</span><span>Weather API, GitHub</span></div>
-            </div>
-            <ul class="feature-list">
-              <li>Real-time weather data</li><li>Search weather by city</li><li>Temperature and weather conditions</li>
-              <li>Humidity and wind information</li><li>Responsive User interface</li><li>API integration</li>
-            </ul>
-            <div class="project-actions">
-              <a href="[LIVE_DEMO_URL]" class="btn btn-primary btn-sm">Live Demo</a>
-              <a href="[GITHUB_URL]" class="btn btn-outline btn-sm">GitHub</a>
-             <!-- <a href="#" class="btn btn-outline btn-sm case-open-link">Case Study</a> -->
-            </div>
-          </div>
-        </div>
-       <!-- <button class="case-toggle" data-target="case-proj3">
-          <span>Full Case Study</span><span class="arrow">▾</span>
-        </button>
-        <div class="case-detail" id="case-proj3">
-          <div class="case-detail-inner">
-            <p style="color:var(--text-muted);font-size:14.5px;">[Add an 18-stage case study for this project once details are confirmed.]</p>
-          </div>
-        </div> -->
-      </article>
 
-      <!-- ===== Generic project template #4 ===== -->
-      <article class="project-card fade-in">
-        <div class="project-top">
-          <div class="project-shot">[PROJECT 3 SCREENSHOT]</div>
-          <div class="project-body">
-            <div class="ptag">Featured project  ·  Interactive / Web application</div>
-            <h3>Online Quiz</h3>
-            <p class="pdesc">An interactive quiz platform that allows users to answer questions, test their Knowledge, and view results instantly.</p>
-            <div class="ps-block"><strong>Problem</strong><p>Traditional quizzes can be time-consuming to conduct and evaluate manually. Users need a simple platform where they can take quizzes and receive immediate feedback.</p></div>
-            <div class="ps-block"><strong>Solution</strong><p>Built an online quiz application where users can attempt multiple-choice questions, navigate through quizzes, submit their answers, and view their scores and results instantly.</p></div>
-            <div class="ps-block">
-              <strong>Stack</strong>
-              <div class="stack-pills"><span>HTML, CSS, JavaScript</span><span>Vs Code, GitHub</span></div>
-            </div>
-            <ul class="feature-list">
-              <li>Interactive multiple-choice questions</li><li>Quiz navigation and answer selection</li><li>Automatic score calculation</li>
-              <li>Instant result display</li><li>Responsive User interface</li><li>User-friendly quiz experience</li>
-            </ul>
-            <div class="project-actions">
-              <a href="[LIVE_DEMO_URL]" class="btn btn-primary btn-sm">Live Demo</a>
-              <a href="[GITHUB_URL]" class="btn btn-outline btn-sm">GitHub</a>
-              <!-- <a href="#" class="btn btn-outline btn-sm case-open-link">Case Study</a> -->
-            </div>
-          </div>
-        </div>
-        <!--<button class="case-toggle" data-target="case-proj4">
-          <span>Full Case Study</span><span class="arrow">▾</span>
-        </button>
-        <div class="case-detail" id="case-proj4">
-          <div class="case-detail-inner">
-            <p style="color:var(--text-muted);font-size:14.5px;">[Add an 18-stage case study for this project once details are confirmed.]</p>
-          </div>
-        </div> -->
-      </article>
+<section id="skills" style="background:var(--bg-soft);">
+<div class="container">
+<div class="section-head fade-in">
+<span class="eyebrow">Skills</span>
 
-    </div>
-  </section>
+</div>
+<div class="skills-grid">
 
-  <!-- ============ EDUCATION SECTION ============
-       NOTE: The "Experience" section has been intentionally removed
-       since you're a fresher with no work experience yet. Education
-       now has its own full-width section instead of sharing a
-       two-column row with Experience. -->
-  <section id="education" style="background:var(--bg-soft);">
-    <div class="container">
-      <div class="section-head fade-in">
-        <span class="eyebrow">Education</span>
-        <h2>Academic background.</h2>
-      </div>
-      <div class="timeline fade-in">
-        <div class="tl-item">
-          <h4>Bachelor in Computer Application</h4>
-          <span class="tl-sub">Axis Colleges</span>
-          <span class="tl-date">2024 – 2027</span>
+<div class="skill-card fade-in">
+<h4>Frontend</h4>
+<div class="badge-row">
+<span class="badge">HTML5</span><span class="badge">CSS3</span><span class="badge">JavaScript</span>
+<span class="badge">TypeScript</span><span class="badge">React</span><span class="badge">Tailwind CSS</span>
+<!-- <span class="badge">Responsive Design</span> -->
+</div>
+</div>
+<div class="skill-card fade-in">
+<h4>Backend</h4>
+<div class="badge-row">
+<span class="badge">Java</span><span class="badge">Spring Boot</span><span class="badge">Node.js</span>
+<span class="badge">Express.js</span><span class="badge">REST APIs</span>
+</div>
+</div>
+<div class="skill-card fade-in">
+<h4>Database</h4>
+<div class="badge-row">
+<span class="badge">MySQL</span><span class="badge">PostgreSQL</span><span class="badge">MongoDB</span>
+</div>
+</div>
+<div class="skill-card fade-in">
+<h4>DevOps / Deployment</h4>
+<div class="badge-row">
+<span class="badge">Git</span><span class="badge">GitHub</span><span class="badge">Docker</span>
+<span class="badge">Netlify</span><span class="badge">Cloud Deployment</span>
+</div>
+</div>
+<div class="skill-card fade-in">
+<h4>Tools</h4>
+<div class="badge-row">
+<span class="badge">VS Code</span><span class="badge">IntelliJ IDEA</span> <!--<span class="badge">Postman</span> -->
+<span class="badge">DOSBox</span>
+</div>
+</div>
+<div class="skill-card fade-in">
+<h4>Core Concepts</h4>
+<div class="badge-row">
+<span class="badge">OOP</span><span class="badge">Data Structures</span><span class="badge">Computer Network</span>
+<span class="badge">Auth & Authorization</span><span class="badge">DB Design</span><span class="badge">Operating System</span>
+<span class="badge">System Design</span>
 
-          <h4>Class 12<sup>th</sup></h4>
-          <span class="tl-sub">Christ Convent School</span>
-          <span class="tl-date">2022 – 2023</span>
 
-          <h4>Class 10<sup>th</sup></h4>
-          <span class="tl-sub">Christ Convent School</span>
-          <span class="tl-date">2020 – 2021</span>
 
-         <!-- <p style="font-size:14.5px;color:var(--text-muted);">Relevant coursework: [Course 1], [Course 2], [Course 3]</p> -->
-        </div>
-        <!-- Duplicate this .tl-item block if you have more than one
-             degree/qualification to list (e.g. schooling + college) -->
-      </div>
-    </div>
-  </section>
+</div>
+</div>
 
-  <!-- ============ CERTIFICATIONS SECTION ============ -->
-  <section id="certifications">
-    <div class="container">
-      <div class="section-head fade-in">
-        <span class="eyebrow">Certifications & Achievements</span>
-        <h2>Recognition and continued learning.</h2>
-      </div>
-      <div class="cert-grid">
-        <div class="cert-card fade-in"><h4>Generative AI Content Creation</h4><p>Adobe · Dec 23, 2025</p></div>
-        <div class="cert-card fade-in"><h4>Graphic Design</h4><p>Adobe · Dec 20, 2025</p></div>
-        <div class="cert-card fade-in"><h4>Connecting to MongoDB in Python</h4><p>MongoDB · Nov 26, 2025</p></div>
-        <div class="cert-card fade-in"><h4>Project based training on Java</h4><p>GRAStech · July 2025</p></div>
-        <div class="cert-card fade-in"><h4>Energy Literacy Training</h4><p>Energy Swaraj Foundation · March 8, 2025</p></div>
-      </div>
-    </div>
-  </section>
+<div class="skill-card fade-in">
+<h4>Programming Skills</h4>
+<div class="badge-row">
+<span class="badge">C++</span><span class="badge">Python</span><span class="badge">Java</span>
+<!-- <span class="badge">DOSBox</span> -->
+</div>
+</div>  
 
-  <!-- ============ DEVELOPER PROFILES SECTION ============ -->
-  <section style="background:var(--bg-soft);">
-    <div class="container">
-      <div class="section-head fade-in">
-        <span class="eyebrow">Find Me Online</span>
-        <h2>Where to see more of my work.</h2>
-      </div>
-      <div class="profile-grid">
-        <a href="https://github.com/anuj-raj-01" class="profile-card fade-in"><div class="profile-icon">🐙</div><h4>GitHub</h4><p>Code & repositories</p></a>
-        <a href="https://www.linkedin.com/in/anuj-raj01/" class="profile-card fade-in"><div class="profile-icon">💼</div><h4>LinkedIn</h4><p>Professional profile</p></a>
-        <a href="[LEETCODE_URL]" class="profile-card fade-in"><div class="profile-icon">🧩</div><h4>LeetCode</h4><p>Problem solving</p></a>
-        <!-- <a href="[BLOG_URL]" class="profile-card fade-in"><div class="profile-icon">✍️</div><h4>Blog</h4><p>Writing & notes</p></a> -->
-      </div>
-    </div>
-  </section>
+</div>
+</div>
+</section>
 
-  <!-- ============ RESUME CTA SECTION ============ -->
-  <section id="resume">
-    <div class="container">
-      <div class="resume-cta fade-in">
-        <h2>Want to know more about my experience?</h2>
-        <p>Get the full picture — roles, projects, and skills in one document.</p>
-        <div class="btns">
-          <a href="[file:///C:/Anuj/A2.pdf]" class="btn btn-accent" target="_blank" rel="noopener">View Resume</a>
-          <a href="[file:///C:/Anuj/A2.pdf]" class="btn btn-outline" style="border-color:rgba(255,255,255,0.4);color:#fff;" download>Download Resume</a>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- ============ CONTACT SECTION ============ -->
-  <section id="contact" style="background:var(--bg-soft);">
-    <div class="container contact-grid">
-      <!-- Left: contact details -->
-      <div class="fade-in">
-        <span class="eyebrow">Contact</span>
-        <h2>Let's build something together.</h2>
-        <p style="color:var(--text-muted);margin:14px 0 30px;">Have a project, opportunity, or idea? I'd love to hear about it.</p>
-        <div class="contact-info-item"><div class="ci-icon">✉️</div><div><strong>Email</strong><span>anujrajput2378@gmail.com</span></div></div>
-        <div class="contact-info-item"><div class="ci-icon">💼</div><div><strong>LinkedIn</strong><span>https://www.linkedin.com/in/anuj-raj01/</span></div></div>
-        <div class="contact-info-item"><div class="ci-icon">🐙</div><div><strong>GitHub</strong><span>https://github.com/anuj-raj-01</span></div></div>
-        <div class="contact-info-item"><div class="ci-icon">📍</div><div><strong>Location</strong><span>Kanpur</span></div></div>
-        <div class="contact-info-item"><div class="ci-icon">&#x1F4DE;</div><div><strong>Phone No.</strong><span>6306095616</span></div></div>
-      </div>
+<section id="projects">
+<div class="container">
+<div class="section-head fade-in">
+<span class="eyebrow">Featured Projects</span>
+<h2>Products I've designed and built end-to-end.</h2>
+<p>Each project below reflects a different full-stack capability — from e-governance platforms to real-time systems.</p>
+</div>
 
-      <!-- Right: contact form. novalidate turns off the browser's built-in
-           validation popups so our custom JS validation (script.js) can
-           control the error messages and styling instead. -->
-      <form class="contact-form" id="contactForm" novalidate>
-        <div class="form-row">
-          <div class="form-group" id="grp-name">
-            <label for="cf-name">Name</label>
-            <input type="text" id="cf-name" name="name" autocomplete="name" required>
-            <span class="err">Please enter your name.</span>
-          </div>
-          <div class="form-group" id="grp-email">
-            <label for="cf-email">Email</label>
-            <input type="email" id="cf-email" name="email" autocomplete="email" required>
-            <span class="err">Please enter a valid email.</span>
-          </div>
-        </div>
-        <div class="form-group" id="grp-subject">
-          <label for="cf-subject">Subject</label>
-          <input type="text" id="cf-subject" name="subject" required>
-          <span class="err">Please enter a subject.</span>
-        </div>
-        <div class="form-group" id="grp-message">
-          <label for="cf-message">Message</label>
-          <textarea id="cf-message" name="message" rows="5" required></textarea>
-          <span class="err">Please enter a message.</span>
-        </div>
-        <button type="submit" class="btn btn-primary" id="cf-submit" style="width:100%;">Send Message</button>
-        <!-- role="status" + aria-live="polite" makes screen readers announce
-             the success/error message automatically when it appears -->
-        <div class="form-status" id="cf-status" role="status" aria-live="polite"></div>
-      </form>
-    </div>
-  </section>
+
+<article class="project-card fade-in">
+<div class="project-top">
+
+<div class="project-shot" style="background:linear-gradient(135deg,#0A1F44,#123A7A);">[LOKPATH SCREENSHOT]</div>
+<div class="project-body">
+<div class="ptag">Featured Project · E-Governance</div>
+<h3>LokPath</h3>
+<p class="pdesc">Citizen Information & RTI Platform</p>
+<div class="ps-block">
+<strong>Problem</strong>
+<p>Citizens often struggle to discover the right information and navigate RTI (Right to Information) requests through fragmented, unclear channels.</p>
+</div>
+<div class="ps-block">
+<strong>Solution</strong>
+<p>A full-stack platform with a responsive citizen-facing interface, structured RTI request workflows, and a support system — built to make government information genuinely accessible.</p>
+</div>
+<div class="ps-block">
+<strong>Stack</strong>
+<div class="stack-pills">
+<span>[Frontend framework]</span><span>[Backend framework]</span><span>[Database]</span><span>[Tools]</span>
+</div>
+</div>
+
+<ul class="feature-list">
+<li>Citizen information discovery</li>
+<li>RTI request workflow</li>
+<li>Request management</li>
+<li>Support / help desk</li>
+<li>Contact system</li>
+<li>Responsive design</li>
+</ul>
+<div class="project-actions">
+<a href="[LIVE_DEMO_URL]" class="btn btn-primary btn-sm">Live Demo</a>
+<a href="[GITHUB_URL]" class="btn btn-outline btn-sm">GitHub</a>
+
+</div>
+</div>
+</div>
+
+
+
+<br>
+<br>
+
+
+
+
+<article class="project-card fade-in">
+<div class="project-top">
+<div class="project-shot">[PROJECT 2 SCREENSHOT]</div>
+<div class="project-body">
+<div class="ptag">Featured project · Real-time / API-driven</div>
+<h3>Weather Detector</h3>
+<p class="pdesc">A Simple weather applications that provides real-time weather information based on the user's selected location.</p>
+<div class="ps-block"><strong>Problem</strong><p>Finding accurate and up-to-date weather information for a specific location can be inconvenient when users need to check multiple sources.</p></div>
+<div class="ps-block"><strong>Solution</strong><p>Built a responsive weather applications that uses a weather API to fetch and display real-time weather information, including temperature, weather conditions, humidity, and wind details.</p></div>
+<div class="ps-block">
+<strong>Stack</strong>
+<div class="stack-pills"><span>HTML, CSS, JavaScript</span><span>Weather API, GitHub</span></div>
+</div>
+<ul class="feature-list">
+<li>Real-time weather data</li><li>Search weather by city</li><li>Temperature and weather conditions</li>
+<li>Humidity and wind information</li><li>Responsive User interface</li><li>API integration</li>
+</ul>
+<div class="project-actions">
+<a href="[LIVE_DEMO_URL]" class="btn btn-primary btn-sm">Live Demo</a>
+<a href="[GITHUB_URL]" class="btn btn-outline btn-sm">GitHub</a>
+
+</div>
+</div>
+</div>
+
+</article>
+
+
+<article class="project-card fade-in">
+<div class="project-top">
+<div class="project-shot">[PROJECT 3 SCREENSHOT]</div>
+<div class="project-body">
+<div class="ptag">Featured project  ·  Interactive / Web application</div>
+<h3>Online Quiz</h3>
+<p class="pdesc">An interactive quiz platform that allows users to answer questions, test their Knowledge, and view results instantly.</p>
+<div class="ps-block"><strong>Problem</strong><p>Traditional quizzes can be time-consuming to conduct and evaluate manually. Users need a simple platform where they can take quizzes and receive immediate feedback.</p></div>
+<div class="ps-block"><strong>Solution</strong><p>Built an online quiz application where users can attempt multiple-choice questions, navigate through quizzes, submit their answers, and view their scores and results instantly.</p></div>
+<div class="ps-block">
+<strong>Stack</strong>
+<div class="stack-pills"><span>HTML, CSS, JavaScript</span><span>Vs Code, GitHub</span></div>
+</div>
+<ul class="feature-list">
+<li>Interactive multiple-choice questions</li><li>Quiz navigation and answer selection</li><li>Automatic score calculation</li>
+<li>Instant result display</li><li>Responsive User interface</li><li>User-friendly quiz experience</li>
+</ul>
+<div class="project-actions">
+<a href="[LIVE_DEMO_URL]" class="btn btn-primary btn-sm">Live Demo</a>
+<a href="[GITHUB_URL]" class="btn btn-outline btn-sm">GitHub</a>
+
+</div>
+</div>
+</div>
+
+</article>
+
+</div>
+</section>
+
+
+<section id="education" style="background:var(--bg-soft);">
+<div class="container">
+<div class="section-head fade-in">
+<span class="eyebrow">Education</span>
+<h2>Academic background.</h2>
+</div>
+<div class="timeline fade-in">
+<div class="tl-item">
+<h4>Bachelor in Computer Application</h4>
+<span class="tl-sub">Axis Colleges</span>
+<span class="tl-date">2024 – 2027</span>
+
+<h4>Class 12<sup>th</sup></h4>
+<span class="tl-sub">Christ Convent School</span>
+<span class="tl-date">2022 – 2023</span>
+
+<h4>Class 10<sup>th</sup></h4>
+<span class="tl-sub">Christ Convent School</span>
+<span class="tl-date">2020 – 2021</span>
+
+
+</div>
+
+</div>
+</div>
+</section>
+
+<section id="certifications">
+<div class="container">
+<div class="section-head fade-in">
+<span class="eyebrow">Certifications & Achievements</span>
+<h2>Recognition and continued learning.</h2>
+</div>
+<div class="cert-grid">
+<div class="cert-card fade-in"><h4>Generative AI Content Creation</h4><p>Adobe · Dec 23, 2025</p></div>
+<div class="cert-card fade-in"><h4>Graphic Design</h4><p>Adobe · Dec 20, 2025</p></div>
+<div class="cert-card fade-in"><h4>Connecting to MongoDB in Python</h4><p>MongoDB · Nov 26, 2025</p></div>
+<div class="cert-card fade-in"><h4>Project based training on Java</h4><p>GRAStech · July 2025</p></div>
+<div class="cert-card fade-in"><h4>Energy Literacy Training</h4><p>Energy Swaraj Foundation · March 8, 2025</p></div>
+</div>
+</div>
+</section>
+
+
+<section style="background:var(--bg-soft);">
+<div class="container">
+<div class="section-head fade-in">
+<span class="eyebrow">Find Me Online</span>
+<h2>Where to see more of my work.</h2>
+</div>
+<div class="profile-grid">
+<a href="https://github.com/anuj-raj-01" class="profile-card fade-in"><div class="profile-icon">🐙</div><h4>GitHub</h4><p>Code & repositories</p></a>
+<a href="www.linkedin.com/in/anuj-raj01" class="profile-card fade-in"><div class="profile-icon">💼</div><h4>LinkedIn</h4><p>Professional profile</p></a>
+<a href="[LEETCODE_URL]" class="profile-card fade-in"><div class="profile-icon">🧩</div><h4>LeetCode</h4><p>Problem solving</p></a>
+
+</div>
+</div>
+</section>
+
+
+<section id="resume">
+<div class="container">
+<div class="resume-cta fade-in">
+<h2>Want to know more about my experience?</h2>
+<p>Get the full picture — roles, projects, and skills in one document.</p>
+<div class="btns">
+<a href="https://github.com/anuj-raj-01/Portfolio/blob/main/A2.pdf" class="btn btn-accent" target="_blank" rel="noopener">View Resume</a>
+<a href="https://github.com/anuj-raj-01/Portfolio/blob/main/A2.pdf" class="btn btn-outline" style="border-color:rgba(255,255,255,0.4);color:#fff;" download>Download Resume</a>
+</div>
+</div>
+</div>
+</section>
+
+<section id="contact" style="background:var(--bg-soft);">
+<div class="container contact-grid">
+
+<div class="fade-in">
+<span class="eyebrow">Contact</span>
+<h2>Let's build something together.</h2>
+<p style="color:var(--text-muted);margin:14px 0 30px;">Have a project, opportunity, or idea? I'd love to hear about it.</p>
+<div class="contact-info-item"><div class="ci-icon">✉️</div><div><strong>Email</strong><span>anujrajput2378@gmail.com</span></div></div>
+<div class="contact-info-item"><div class="ci-icon">💼</div><div><strong>LinkedIn</strong><span>www.linkedin.com/in/anuj-raj01</span></div></div>
+<div class="contact-info-item"><div class="ci-icon">🐙</div><div><strong>GitHub</strong><span>https://github.com/anuj-raj-01</span></div></div>
+<div class="contact-info-item"><div class="ci-icon">📍</div><div><strong>Location</strong><span>Kanpur</span></div></div>
+<div class="contact-info-item"><div class="ci-icon">&#x1F4DE;</div><div><strong>Phone No.</strong><span>6306095616</span></div></div>
+</div>
+
+
+<form class="contact-form" id="contactForm" novalidate>
+<div class="form-row">
+<div class="form-group" id="grp-name">
+<label for="cf-name">Name</label>
+<input type="text" id="cf-name" name="name" autocomplete="name" required>
+<span class="err">Please enter your name.</span>
+</div>
+<div class="form-group" id="grp-email">
+<label for="cf-email">Email</label>
+<input type="email" id="cf-email" name="email" autocomplete="email" required>
+<span class="err">Please enter a valid email.</span>
+</div>
+</div>
+<div class="form-group" id="grp-subject">
+<label for="cf-subject">Subject</label>
+<input type="text" id="cf-subject" name="subject" required>
+<span class="err">Please enter a subject.</span>
+</div>
+<div class="form-group" id="grp-message">
+<label for="cf-message">Message</label>
+<textarea id="cf-message" name="message" rows="5" required></textarea>
+<span class="err">Please enter a message.</span>
+</div>
+<button type="submit" class="btn btn-primary" id="cf-submit" style="width:100%;">Send Message</button>
+
+<div class="form-status" id="cf-status" role="status" aria-live="polite"></div>
+</form>
+</div>
+</section>
 
 </main>
 
-<!-- ============ FOOTER ============ -->
+
 <footer>
-  <div class="container">
-    <div class="footer-top">
-      <div>
-        <div class="footer-logo">[Anuj<span> </span>Rajput]</div>
-        <p style="font-size:14px;">Full Stack Developer</p>
-      </div>
-      <nav class="footer-nav" aria-label="Footer">
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <div class="footer-social">
-        <a href="https://github.com/anuj-raj-01" aria-label="GitHub">🐙</a>
-        <a href="https://www.linkedin.com/in/anuj-raj01/" aria-label="LinkedIn">💼</a>
-      </div>
-    </div>
-    <div class="footer-bottom">© 2026 [Anuj Rajput]. All rights reserved.</div>
-  </div>
+<div class="container">
+<div class="footer-top">
+<div>
+<div class="footer-logo">[Anuj<span> </span>Rajput]</div>
+<p style="font-size:14px;">Full Stack Developer</p>
+</div>
+<nav class="footer-nav" aria-label="Footer">
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+</nav>
+<div class="footer-social">
+<a href="https://github.com/anuj-raj-01" aria-label="GitHub">🐙</a>
+<a href="www.linkedin.com/in/anuj-raj01" aria-label="LinkedIn">💼</a>
+</div>
+</div>
+<div class="footer-bottom">© 2026 [Anuj Rajput]. All rights reserved.</div>
+</div>
 </footer>
 
-<!-- Link to the external JavaScript file. Placed at the end of <body>
-     so the HTML content loads first and script.js can safely find
-     every element it needs (they already exist in the page by this point). -->
+
 <script src="script.js"></script>
 
 </body>
